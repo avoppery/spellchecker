@@ -38,7 +38,7 @@ vowels = "AEIOUaeiou"
 annotated_html = '<div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 24px; font-weight: bold; font-family: monospace;">'
 
 # 4. Loop through every letter the user typed
-for letter in user_input:
+for letter in user_query:
     # Handle spaces (keep them as invisible gaps)
     if letter == " ":
         annotated_html += '<div style="width: 15px;"></div>'
