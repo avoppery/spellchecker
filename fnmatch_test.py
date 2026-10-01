@@ -16,6 +16,9 @@ new_df = combined_df[0].str.split(" ", n=1, expand=True)
 user_query = st.text_input("Spell a word: ").lower()
 user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user_query)))
 
+if user_query == []:
+	st.write([])
+
 if user_match == []:
 	st.write("No matches found.")
 else:
