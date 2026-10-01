@@ -17,7 +17,7 @@ user_query = st.text_input("Spell a word: ").lower()
 user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user_query)))
 
 if user_query == "":
-	st.write([])
+	st.write("")
 else:
 	if user_match == []:
 		st.write("No matches found.")
