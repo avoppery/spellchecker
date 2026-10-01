@@ -29,20 +29,3 @@ else:
 				matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
 				formatted_output = "\n".join([f"{i}. {definition}" for i, definition in enumerate(matched_definitions, start=1)])
 				st.write(f"\n{word}\n{formatted_output}\n")
-
-st.markdown("""
-<style>
-    .stApp {
-        background-color: #FFDF22;
-    }
-
-    h1 {
-        color: #0080C6;
-    }
-
-    .stTextInput label {
-        color: #FFFFFF;
-        font-weight: bold;
-    }
-</style>
-""", unsafe_allow_html=True)
