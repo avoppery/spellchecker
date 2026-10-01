@@ -3,7 +3,7 @@ import pandas as pd
 import glob
 import streamlit as st
 
-st.title("Spellchecker 1.0.0")
+st.title("Spellchecker")
 st.write("Type any word to check spelling. Use '?' for unknown letters.")
 
 csv_files = glob.glob("*.csv")
