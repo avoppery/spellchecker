@@ -1,6 +1,10 @@
 import fnmatch
 import pandas as pd
 import glob
+import streamlit as st
+
+st.title("Spellchecker 1.0.0")
+st.write("Type any word to check spelling. Use '?' for unknown letters.")
 
 csv_files = glob.glob("*.csv")
 combined_df = pd.concat(
@@ -9,19 +13,19 @@ combined_df = pd.concat(
 combined_df[0] = combined_df[0].str.lower()
 new_df = combined_df[0].str.split(" ", n=1, expand=True)
 
-print("Input Text")
+st.write("Input Text")
 
 user_query = input().lower()
 user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user_query)))
 
 if user_match == []:
-	print("No matches found.")
+	st.write("No matches found.")
 else:
-	print(f"Matches: {', '.join(user_match)}\n")
-	print("View Definition(s)? Y/N")
+	st.write(f"Matches: {', '.join(user_match)}\n")
+	st.write("View Definition(s)? Y/N")
 	user_choice = input().lower()
 	if user_choice == "y":
 		for word in user_match:
 			matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
 			formatted_output = "\n".join([f"{i}. {definition}" for i, definition in enumerate(matched_definitions, start=1)])
-			print(f"\n{word}\n{formatted_output}\n")
+			st.write(f"\n{word}\n{formatted_output}\n")
