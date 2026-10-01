@@ -13,9 +13,7 @@ combined_df = pd.concat(
 combined_df[0] = combined_df[0].str.lower()
 new_df = combined_df[0].str.split(" ", n=1, expand=True)
 
-st.write("Input Text")
-
-user_query = input().lower()
+user_query = st.text_input(Spell a word:").lower()
 user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user_query)))
 
 if user_match == []:
@@ -23,7 +21,7 @@ if user_match == []:
 else:
 	st.write(f"Matches: {', '.join(user_match)}\n")
 	st.write("View Definition(s)? Y/N")
-	user_choice = input().lower()
+	user_choice = st.text_input().lower()
 	if user_choice == "y":
 		for word in user_match:
 			matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
