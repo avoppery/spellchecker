@@ -20,8 +20,7 @@ if user_match == []:
 	st.write("No matches found.")
 else:
 	st.write(f"Matches: {', '.join(user_match)}\n")
-	st.write("View Definition(s)? Y/N")
-	user_choice = st.text_input().lower()
+	user_choice = st.text_input("View definition(s)? Y/N: ").lower()
 	if user_choice == "y":
 		for word in user_match:
 			matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
