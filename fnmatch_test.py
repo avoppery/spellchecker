@@ -19,13 +19,13 @@ user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user
 if user_query == []:
 	st.write([])
 
-if user_match == []:
-	st.write("No matches found.")
-else:
-	st.write(f"Matches: {', '.join(user_match)}\n")
-	user_choice = st.text_input("View definition(s)? Y/N: ").lower()
-	if user_choice == "y":
-		for word in user_match:
-			matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
-			formatted_output = "\n".join([f"{i}. {definition}" for i, definition in enumerate(matched_definitions, start=1)])
-			st.write(f"\n{word}\n{formatted_output}\n")
+	if user_match == []:
+		st.write("No matches found.")
+	else:
+		st.write(f"Matches: {', '.join(user_match)}\n")
+		user_choice = st.text_input("View definition(s)? Y/N: ").lower()
+		if user_choice == "y":
+			for word in user_match:
+				matched_definitions = new_df.loc[new_df[0] == word, 1].tolist()
+				formatted_output = "\n".join([f"{i}. {definition}" for i, definition in enumerate(matched_definitions, start=1)])
+				st.write(f"\n{word}\n{formatted_output}\n")
