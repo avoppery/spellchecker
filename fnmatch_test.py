@@ -18,7 +18,7 @@ user_match = list(dict.fromkeys(fnmatch.filter(new_df[0].dropna().tolist(), user
 
 if user_query == []:
 	st.write([])
-
+else:
 	if user_match == []:
 		st.write("No matches found.")
 	else:
